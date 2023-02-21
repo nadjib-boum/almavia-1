@@ -1,0 +1,21 @@
+{
+  "name": "Almavia 1.0",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": [],
+	"host_permissions": ["https://eg.almaviva-visa.services/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://eg.almaviva-visa.services/*"],
+      "js": ["content.js"],
+			"run_at": "document_end",
+			"all_frames": true
+    }
+  ],
+	"action": {
+		"default_popup": "popup.html"
+	},
+  "background": {
+    "service_worker": "background.js"
+  }
+}
