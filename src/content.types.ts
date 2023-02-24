@@ -1,9 +1,11 @@
+export type DateRange = {
+  default: boolean;
+  first_date: string;
+  last_date: string;
+}
+
 export type InputData = {
-  date_range: {
-    default: boolean;
-    first_date: string;
-    last_date: string;
-  }
+  date_range: DateRange
 }
 
 export type APIDates = {

@@ -1,16 +1,16 @@
 import { getData } from './utils/http';
 import { getDateRange, correctDateFormat, getDefaultDateRange } from './utils/date';
 import { sleep, addZero } from './utils/methods';
-import type { InputData, APIDates } from './content.types';
+import type { InputData, DateRange,APIDates } from './content.types';
 
 Script ();
 
 async function Script () {
   const { date_range }: InputData = await fetchInputData ();
-  await checkDates (1, date_range);
+  await checkDates (date_range);
 }
 
-async function checkDates (times: number, date_range: any) {
+async function checkDates (date_range: DateRange, times: number=1) {
   
   let first_date, last_date;
 
@@ -34,7 +34,7 @@ async function checkDates (times: number, date_range: any) {
   } catch (err) {
     console.log ('%c Service Unavailable', 'color: #f00;font-size: 17px;font-weight: bold;');
     await sleep (300000);
-    checkDates (times + 1, date_range);
+    checkDates (date_range, times + 1);
   }
 } 
 
