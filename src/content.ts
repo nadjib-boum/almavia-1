@@ -1,6 +1,6 @@
 import { getData } from './utils/http';
 import { getDateRange } from './utils/date';
-import { sleep } from './utils/methods';
+import { sleep, } from './utils/methods';
 
 Script ();
 
@@ -9,9 +9,11 @@ async function Script () {
 }
 
 async function checkDates (times: number) {
-  console.log (`%c [${times}] Script is running on: ${new Date ().toLocaleString()}`, 'font-weight: bold;');
   try {
-    const fullDateRange: string[] =  getDateRange ('01/3/2023', '31/3/2023');
+    const start = window.prompt ('Enter First Date');
+    const last = window.prompt ('Enter Last Date');
+    console.log (`%c [${times}] Script is running on: ${new Date ().toLocaleString()}`, 'font-weight: bold;');
+    const fullDateRange: string[] =  getDateRange (start || '01/3/2023', last || '31/3/2023');
     const targetRange: string[] = (await fetchDates ('01/3/2023', '31/3/2023')).map ((d: { date: string, isHoliday: boolean }) => d.date);
     const results = fullDateRange.filter ((d: string) => !targetRange.includes(d)); 
     console.log ('%c Service Available', 'color: #0f0;font-size: 17px;font-weight: bold;');
@@ -30,4 +32,8 @@ async function fetchDates (start: string, end: string) {
     method: 'GET',
   });
   return dates;
+}
+
+function injectMP3 () {
+  // chrome.runtime.getURL ('./alarme.mp3')
 }
