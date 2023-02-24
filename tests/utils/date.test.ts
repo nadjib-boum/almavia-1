@@ -1,4 +1,4 @@
-import { getLastDay, deconstructDate, addZero } from "../../src/utils/date";
+import { getLastDay, deconstructDate, correctDateFormat, getDefaultDateRange } from "../../src/utils/date";
 
 describe ('getLastDay Function', () => {
 
@@ -18,16 +18,10 @@ describe ('deconstructDate Function', () => {
 
 })
 
-describe ('addZero Function', () => {
 
-  it ('should add zero to 5 because 5 < 10', () => {
-    const value = addZero (5);
-    expect(value).toBe ('05');
-  });
-
-  it ('should not add 0 to 18 because 18 > 10', () => {
-    const value = addZero (18);
-    expect (value).toBe ('18');
-  });
-
+describe ('correctDateFormat Function', () => {
+  it ('Should Return The Correct Date', () => {
+    const value = getDefaultDateRange ();
+    expect (value).toEqual (['25/02/2023', '01/05/2023']);
+  })
 });

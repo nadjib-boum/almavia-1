@@ -4,14 +4,19 @@ type fetchOptions = {
 };
 
 
-export async function getData (url: string, options: fetchOptions) {
-  const res = await fetch(url, {
-    'headers': {
-      'Content-Type': 'application/json',
-    "Accept": "application/json",
-    },
-    ...options
-  });
-  const data = await res.json ();
-  return data;
+export async function getData <T> (url: string, options: fetchOptions) : Promise<T> {
+  try {
+    const res = await fetch(url, {
+      'headers': {
+        'Content-Type': 'application/json',
+      "Accept": "application/json",
+      },
+      ...options
+    });
+    if (!res.ok) throw new Error (res.statusText);
+    const data = await res.json ();
+    return data;
+  } catch (err) {
+    throw err;
+  }
 }
