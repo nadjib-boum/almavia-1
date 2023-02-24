@@ -14,13 +14,13 @@ async function checkDates (times: number, date_range: any) {
   
   let first_date, last_date;
 
-  if (date_range.default) {
+  if (date_range.default === false) {
+    first_date = date_range.first_date;  
+    last_date = date_range.last_date;  
+  } else {
     const defaultDateRange = getDefaultDateRange ();
     first_date = defaultDateRange[0];
     last_date = defaultDateRange[1];
-  } else {
-    first_date = date_range.first_date;  
-    last_date = date_range.last_date;  
   }
   
   try {
