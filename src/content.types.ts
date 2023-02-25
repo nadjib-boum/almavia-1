@@ -10,5 +10,10 @@ export type InputData = {
 
 export type APIDates = {
   date: string;
-  isHoliday: boolean 
+  isHoliday: boolean; 
+}
+
+export type MessageRequest = {
+  source: string;
+  command: string;
 }

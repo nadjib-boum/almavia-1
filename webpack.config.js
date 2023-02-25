@@ -5,7 +5,11 @@ module.exports = {
    mode: "production",
    entry: {
       background: './src/background.ts',
-      content: './src/content.ts'
+      content: './src/content.ts',
+      script: {
+         import: './src/js/script.ts',
+         filename: './js/script.js'
+      }
       // background: path.resolve(__dirname, "src", "background.ts"),
    },
    output: {

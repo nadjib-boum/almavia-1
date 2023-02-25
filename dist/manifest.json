@@ -20,7 +20,7 @@
   },
   "web_accessible_resources": [
     {
-      "resources": [ "input.json" ],
+      "resources": [ "input.json", "alarm.mp3" ],
       "matches": [ "https://eg.almaviva-visa.services/*" ]
     }
   ]
