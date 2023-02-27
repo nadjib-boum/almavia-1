@@ -2,7 +2,6 @@ import { getData } from './utils/http';
 import { getDateRange, correctDateFormat, getDefaultDateRange } from './utils/date';
 import { sleep, addZero } from './utils/methods';
 import type { InputData, DateRange, APIDates, MessageRequest } from './content.types';
-
 Script ();
 
 async function Script () {
@@ -70,11 +69,14 @@ function injectAlarm () {
   document.body.insertAdjacentHTML('afterbegin', htmlAudio);
 }
 
-async function runAlarm () {
+function runAlarm () {
   const audio: (HTMLAudioElement | null) = document.querySelector('audio#alarm');
   if (audio) {
     audio.setAttribute ('loop', '');
-    await audio.play ();
+    navigator.mediaDevices.getUserMedia({ audio: true }).then(async function (stream) {
+      await audio.play();
+      stream.getTracks().forEach(function (track) { track.stop(); });
+   });
   }
 }
 
