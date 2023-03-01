@@ -2,6 +2,7 @@ import { getData } from './utils/http';
 import { getDateRange, correctDateFormat, getDefaultDateRange } from './utils/date';
 import { sleep, addZero } from './utils/methods';
 import type { InputData, DateRange, APIDates, MessageRequest } from './content.types';
+
 Script ();
 
 async function Script () {
@@ -24,13 +25,20 @@ async function checkDates (date_range: DateRange, times: number=1) {
   }
   
   try {
-    console.log (`%c [${addZero (times)}] Script is running on: ${correctDateFormat (new Date ().toLocaleString())}`, 'font-weight: bold;');
+    const currentDate = new Date ().toLocaleString();
     const fullDateRange: string[] = getDateRange (first_date, last_date);
     const targetRange: string[] = (await fetchDates (first_date, last_date)).map ((d: APIDates) => d.date);
     const results: string[] = fullDateRange.filter ((d: string) => !targetRange.includes(d)); 
-    console.log ('%c Service Available', 'color: #0f0;font-size: 17px;font-weight: bold;');
-    console.table (results);
-    results.length > 0 && runAlarm ();
+    if (results.length > 0) {
+      console.log (`%c [${addZero (times)}] Successfull Request on ${correctDateFormat (currentDate.includes(',') ? currentDate.split(',')[0] : currentDate)}`, 'color: #0f0;font-size: 16px;font-weight: bold;');
+      console.table (results);
+      runAlarm ();
+    } else {
+      console.log (`%c [${addZero (times)}] Unuccessfull Request on ${correctDateFormat (currentDate.includes(',') ? currentDate.split(',')[0] : currentDate)}`, 'color: orange;font-size: 16px;font-weight: bold;');
+      await sleep (300000);
+      checkDates (date_range, times + 1);
+    }
+    
     return;
   } catch (err) {
     console.log ('%c Service Unavailable', 'color: #f00;font-size: 17px;font-weight: bold;');
