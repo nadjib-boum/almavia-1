@@ -29,12 +29,12 @@ async function checkDates (date_range: DateRange, times: number=1) {
     const fullDateRange: string[] = getDateRange (first_date, last_date);
     const targetRange: string[] = (await fetchDates (first_date, last_date)).map ((d: APIDates) => d.date);
     if ( fullDateRange.length === targetRange.length ) {
-      console.log (`%c [${addZero (times)}] Unuccessfull Request on ${correctDateFormat (currentDate.includes(',') ? currentDate.split(',')[0] : currentDate)}`, 'color: orange;font-size: 16px;font-weight: bold;');
+      console.log (`%c [${addZero (times)}] No Available Appointments On ${correctDateFormat (currentDate)}`, 'color: orange;font-size: 16px;font-weight: bold;');
       await sleep (300000);
       checkDates (date_range, times + 1);
     } else {
       const results: string[] = fullDateRange.filter ((d: string) => !targetRange.includes(d)); 
-      console.log (`%c [${addZero (times)}] Successfull Request on ${correctDateFormat (currentDate.includes(',') ? currentDate.split(',')[0] : currentDate)}`, 'color: #0f0;font-size: 16px;font-weight: bold;');
+      console.log (`%c [${addZero (times)}] There Are ${results.length} Appointment Available On ${currentDate}`, 'color: #0f0;font-size: 16px;font-weight: bold;');
       console.table (results);
       runAlarm ();
     }
