@@ -29,7 +29,7 @@ async function checkDates (date_range: DateRange, times: number=1) {
     const fullDateRange: string[] = getDateRange (first_date, last_date);
     const targetRange: string[] = (await fetchDates (first_date, last_date)).map ((d: APIDates) => d.date);
     if ( fullDateRange.length === targetRange.length ) {
-      console.log (`%c [${addZero (times)}] No Available Appointments On ${correctDateFormat (currentDate)}`, 'color: orange;font-size: 16px;font-weight: bold;');
+      console.log (`%c [${addZero (times)}] No Available Appointments On ${(currentDate)}`, 'color: orange;font-size: 16px;font-weight: bold;');
       await sleep (300000);
       checkDates (date_range, times + 1);
     } else {
