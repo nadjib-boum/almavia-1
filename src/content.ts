@@ -30,7 +30,7 @@ async function checkDates (date_range: DateRange, times: number=1) {
     const results: string[] = fullDateRange.filter ((d: string) => !targetRange.includes(d)); 
     console.log ('%c Service Available', 'color: #0f0;font-size: 17px;font-weight: bold;');
     console.table (results);
-    runAlarm ();
+    results.length > 0 && runAlarm ();
     return;
   } catch (err) {
     console.log ('%c Service Unavailable', 'color: #f00;font-size: 17px;font-weight: bold;');
