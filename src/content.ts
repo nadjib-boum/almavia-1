@@ -28,15 +28,15 @@ async function checkDates (date_range: DateRange, times: number=1) {
     const currentDate = new Date ().toLocaleString();
     const fullDateRange: string[] = getDateRange (first_date, last_date);
     const targetRange: string[] = (await fetchDates (first_date, last_date)).map ((d: APIDates) => d.date);
-    const results: string[] = fullDateRange.filter ((d: string) => !targetRange.includes(d)); 
-    if (results.length > 0) {
-      console.log (`%c [${addZero (times)}] Successfull Request on ${correctDateFormat (currentDate.includes(',') ? currentDate.split(',')[0] : currentDate)}`, 'color: #0f0;font-size: 16px;font-weight: bold;');
-      console.table (results);
-      runAlarm ();
-    } else {
+    if ( fullDateRange.length === targetRange.length ) {
       console.log (`%c [${addZero (times)}] Unuccessfull Request on ${correctDateFormat (currentDate.includes(',') ? currentDate.split(',')[0] : currentDate)}`, 'color: orange;font-size: 16px;font-weight: bold;');
       await sleep (300000);
       checkDates (date_range, times + 1);
+    } else {
+      const results: string[] = fullDateRange.filter ((d: string) => !targetRange.includes(d)); 
+      console.log (`%c [${addZero (times)}] Successfull Request on ${correctDateFormat (currentDate.includes(',') ? currentDate.split(',')[0] : currentDate)}`, 'color: #0f0;font-size: 16px;font-weight: bold;');
+      console.table (results);
+      runAlarm ();
     }
     
     return;
