@@ -64,7 +64,7 @@ async function fetchInputData () {
     });
     return data;
   } catch (err: any) {
-    return err;
+    return Promise.reject(err);
   }
 }
 

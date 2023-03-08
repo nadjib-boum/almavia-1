@@ -13,7 +13,7 @@ export async function getData <T> (url: string, options: fetchOptions) : Promise
       },
       ...options
     });
-    if (!res.ok) throw new Error (res.statusText);
+    if (!res.ok) throw new Error ();
     const data = await res.json ();
     return data;
   } catch (err) {
