@@ -24,7 +24,7 @@ function constructUI({ buttonsData, date_range }: any) {
   const app = createElement("div", {
     id: "myApp",
     style:
-      "position: absolute;top: 0;left: 0;padding: 10px;background: #FFF;z-index:999999",
+      "position: absolute;top: 0;left: 0;padding: 10px;background: #FFF;z-index:999999;display: flex;flex-flow: row wrap;gap: 10px;",
   });
   for (const buttonData of buttonsData) {
     const button = createElement("button", {}, app);
