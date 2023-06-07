@@ -1,4 +1,16 @@
 body {
-  height: 200px;
-  width: 200px;
+  height: 300px;
+  width: 250px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 20px;
+}
+
+.buttons button {
+  font-size: 20px;
+  cursor: pointer;
 }

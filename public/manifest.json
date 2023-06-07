@@ -3,25 +3,25 @@
   "version": "1.0",
   "manifest_version": 3,
   "permissions": [],
-	"host_permissions": ["https://eg.almaviva-visa.services/*"],
+  "host_permissions": ["https://eg.almaviva-visa.services/*"],
   "content_scripts": [
     {
-      "matches": ["https://eg.almaviva-visa.services/appointment/*"],
+      "matches": ["https://eg.almaviva-visa.services/*"],
       "js": ["content.js"],
-			"run_at": "document_end",
-			"all_frames": true
+      "run_at": "document_end",
+      "all_frames": true
     }
   ],
-	"action": {
-		"default_popup": "popup.html"
-	},
+  "action": {
+    "default_popup": "popup.html"
+  },
   "background": {
     "service_worker": "background.js"
   },
   "web_accessible_resources": [
     {
-      "resources": [ "input.json", "alarm.mp3" ],
-      "matches": [ "https://eg.almaviva-visa.services/*" ]
+      "resources": ["config.json", "alarm.mp3"],
+      "matches": ["https://eg.almaviva-visa.services/*"]
     }
   ]
 }
