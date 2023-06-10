@@ -84,8 +84,8 @@ async function checkDates({ date_range, buttonData }: any) {
 
 async function fetchDates(data: any) {
   const { start, end, buttonData } = data;
-  const { IDtypology, idCategory } = buttonData;
-  const endpoint = `https://eg.almaviva-visa.services/api/sites/disabled-dates/?start=${start}&end=${end}&siteId=22&persons=1&IDtypology=${IDtypology}&IdCategory=${idCategory}`;
+  const { IDtypology, idCategory, siteId } = buttonData;
+  const endpoint = `https://eg.almaviva-visa.services/api/sites/disabled-dates/?start=${start}&end=${end}&siteId=${siteId}&persons=1&IDtypology=${IDtypology}&IdCategory=${idCategory}`;
   const dates = await getData(endpoint, {
     method: "GET",
   });

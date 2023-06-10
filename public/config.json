@@ -3,12 +3,14 @@
     {
       "label": "test",
       "IDtypology": 3,
-      "idCategory": 2
+      "idCategory": 2,
+      "siteId": 2
     },
     {
       "label": "test",
       "IDtypology": 3,
-      "idCategory": 2
+      "idCategory": 2,
+      "siteId": 2
     }
   ],
   "date_range": {
