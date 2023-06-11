@@ -1,24 +1,20 @@
-type fetchOptions = {
-  method: "POST" | "GET";
-  body?: string;
-};
+interface IHTTPUtil {
+  get: (url: string) => Promise<any>;
+}
 
-export async function getData(
-  url: string,
-  options: fetchOptions
-): Promise<any> {
-  try {
-    const res = await fetch(url, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      ...options,
-    });
-    if (!res.ok) return Promise.reject();
-    const data = await res.json();
-    return data;
-  } catch (err) {
-    return Promise.reject();
+class HTTPUtil implements IHTTPUtil {
+  async get(url: string): Promise<any> {
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error();
+      const data = await res.json();
+      return data;
+    } catch (err: any) {
+      return Promise.reject(err);
+    }
   }
 }
+
+const httpUtil = new HTTPUtil();
+
+export default httpUtil;

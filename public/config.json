@@ -1,21 +1,11 @@
 {
   "buttons": [
     {
-      "label": "test",
+      "label": "main",
       "IDtypology": 3,
-      "idCategory": 2,
-      "siteId": 2
-    },
-    {
-      "label": "test",
-      "IDtypology": 3,
-      "idCategory": 2,
-      "siteId": 2
+      "IdCategory": 2,
+      "siteId": 22,
+      "persons": 1
     }
-  ],
-  "date_range": {
-    "default": true,
-    "first_date": "01/3/2023",
-    "last_date": "31/3/2023"
-  }
+  ]
 }
