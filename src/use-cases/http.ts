@@ -1,5 +1,6 @@
-import { APIParams, bindAPIParams } from "../helpers/api";
 import HTTPUtil from "../utils/http";
+import DOMUtil from "../utils/dom";
+import { APIParams, bindAPIParams } from "../helpers/api";
 
 export async function fetchConfig(): Promise<any> {
   try {

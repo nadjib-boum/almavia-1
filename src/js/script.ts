@@ -1,3 +1,5 @@
+// @ts-nocheck
+/*
 import { fetchAPIDates, fetchConfig } from "../use-cases/http";
 import { createAPIButtons } from "../use-cases/dom";
 import { formulateResponseDate } from "../helpers/date";
@@ -8,7 +10,7 @@ import {
 } from "../use-cases/date";
 import type { Message } from "../utils/message";
 import type { APIParams } from "../helpers/api";
-import type { ButtonsData } from "./script.types";
+import type { ButtonsData } from "../content.types";
 
 window.onload = OnPopupLoad;
 
@@ -63,3 +65,6 @@ function getAvailableDates(
 ): string[] {
   return fullRangeDate.filter((date: string) => !apiDatesRange.includes(date));
 }
+
+
+*/

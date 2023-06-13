@@ -5,6 +5,7 @@ export type APIParams = {
   IdCategory: number;
   siteId: number;
   persons: number;
+  label: string;
 };
 
 export function bindAPIParams(apiParams: APIParams): string {
