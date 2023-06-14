@@ -1,3 +1,3 @@
-export const exclude = (_this: any[], from: any[]) => {
-  return from.filter((item) => !_this.includes(item));
+export const exclude = (some: any[], all: any[]) => {
+  return all.filter((item) => !some.includes(item));
 };

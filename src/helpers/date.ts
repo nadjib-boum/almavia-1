@@ -20,3 +20,17 @@ export function getFormulateDateRange(range: Date[]): string[] {
 export function formulateResponseDate(date: string): string {
   return date.split("-").reverse().join("/");
 }
+
+function setDateToDefaultFormat(date: string) {
+  const [d, m, y] = date.split("/");
+  return `${m}/${d}/${y}`;
+}
+
+export function getFromToday(dates: string[]): string[] {
+  const fullDates = dates.map(
+    (date: string) => new Date(setDateToDefaultFormat(date))
+  );
+  return fullDates
+    .filter((date: Date) => date >= new Date())
+    .map((date: Date) => date.toLocaleDateString("en-GB"));
+}

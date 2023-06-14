@@ -1,7 +1,7 @@
 import { fetchAPIDates } from "./http";
 import { getTargetRange } from "./date";
 import domUtil from "../utils/dom";
-import { formulateResponseDate } from "../helpers/date";
+import { formulateResponseDate, getFromToday } from "../helpers/date";
 import type { ButtonData } from "../content.types";
 import { exclude } from "../helpers/array";
 export function createAppContainer() {
@@ -43,7 +43,9 @@ export function createAPIButtons(
                 formulateResponseDate(item.date)
             );
             const fullRangeDate: string[] = getTargetRange();
-            const availableDates = exclude(apiDatesRange, fullRangeDate);
+            const availableDates = getFromToday(
+              exclude(apiDatesRange, fullRangeDate)
+            );
             console.log(`%c ${label}`, "font-size:18px;color: #0f0");
             console.table(availableDates);
           } catch (err: any) {
